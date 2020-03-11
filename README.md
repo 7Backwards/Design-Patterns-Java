@@ -1,1 +1,1 @@
-# Trabalho-de-Padr-es-de-Desenho
+# Trabalho-de-Padroes-de-Desenho
