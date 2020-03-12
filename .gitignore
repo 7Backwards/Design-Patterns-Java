@@ -116,3 +116,7 @@ fabric.properties
 hs_err_pid*
 
 # End of https://www.gitignore.io/api/java,intellij
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/Trabalho-de-Padroes-de-Desenho.iml
