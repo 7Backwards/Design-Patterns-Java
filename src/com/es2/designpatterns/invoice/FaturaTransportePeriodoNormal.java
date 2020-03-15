@@ -1,37 +1,36 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.invoice;
 
+import com.es2.designpatterns.cargo.Transporte;
 import com.es2.designpatterns.exceptions.FaturaTransporteNotFoundException;
 import com.es2.designpatterns.exceptions.NullPercentagemException;
-
-import java.util.LinkedHashMap;
 
 public class FaturaTransportePeriodoNormal implements FaturaTransporteInterface {
 
 
-    protected LinkedHashMap<Integer, String> mFaturas;
+    protected String stringFaturas = "";
     protected Float valorPercentagem;
 
     public FaturaTransportePeriodoNormal() {
-
-        mFaturas = new LinkedHashMap<>();
     }
 
     @Override
     public void setFaturaTransporte(Transporte transporte) throws NullPercentagemException {
-        if(valorPercentagem > 0)
-            mFaturas.put(mFaturas.size() + 1, transporte.getTransporteItems() +
+        if(valorPercentagem > 0) {
+            stringFaturas = transporte.getTransporteItems() +
                     "\nValor Total da Carga - " + transporte.getTransporteTotalPrice() +
                     "\nValor do Transporte - " + transporte.getTransporteTotalPrice() * (valorPercentagem / 100) +
                     "\nPercentagem - " + valorPercentagem +
-                    "\nTipo de Transporte - " + this.getClass());
-        else
+                    "\nTipo de Transporte - " + this.getClass();
+        }
+        else {
             throw new NullPercentagemException();
+        }
     }
 
     @Override
-    public String getFaturaTransporte(Integer idFaturaTransporte) throws FaturaTransporteNotFoundException {
-        if (mFaturas.containsKey(idFaturaTransporte))
-            return mFaturas.get(idFaturaTransporte);
+    public String getFaturaTransporte() throws FaturaTransporteNotFoundException {
+        if (stringFaturas.length() > 0)
+            return stringFaturas;
         else
             throw new FaturaTransporteNotFoundException();
     }

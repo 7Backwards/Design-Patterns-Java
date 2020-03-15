@@ -1,4 +1,4 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.cargo;
 
 public class Medicamento extends Transporte {
 

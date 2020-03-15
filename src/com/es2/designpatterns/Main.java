@@ -1,9 +1,13 @@
 package com.es2.designpatterns;
 
-import com.es2.designpatterns.exceptions.ContainerFullException;
-import com.es2.designpatterns.exceptions.ContainerNotFoundException;
-import com.es2.designpatterns.exceptions.ContainerPoolMaxedOutException;
-import com.es2.designpatterns.exceptions.UserNotFoundException;
+import com.es2.designpatterns.cargo.Container;
+import com.es2.designpatterns.cargo.ContainerReusablePool;
+import com.es2.designpatterns.cargo.Medicamento;
+import com.es2.designpatterns.exceptions.*;
+import com.es2.designpatterns.invoice.FaturaTransporte;
+import com.es2.designpatterns.invoice.FaturaTransportePeriodoNormal;
+import com.es2.designpatterns.users.User;
+import com.es2.designpatterns.users.UserManager;
 
 public class Main {
 
@@ -59,7 +63,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        //Test get Container then 2 free container
+        //Test get Container -> free container
         try {
             Container container = ContainerReusablePool.getInstance().getContainer("Contentor");
             System.out.println(container.getName());
@@ -107,11 +111,34 @@ public class Main {
 
             System.out.println((Cargo.getTransporteTotalPrice()));
 
-        } catch (ContainerNotFoundException | UserNotFoundException e) {
+
+            //Test create invoice
+            FaturaTransporte faturaTransporte = new FaturaTransporte();
+            int idFatura = faturaTransporte.addFatura(new FaturaTransportePeriodoNormal());
+            faturaTransporte.setPercentagem(idFatura, (float)50);
+            faturaTransporte.setFatura(idFatura, Cargo);
+            //Release Motorista
+            UserManager.getInstanceLogin().freeMotorista(Cargo.getMotoristaInCharge().getUsername());
+            //Release Containers
+            ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-1");
+            ContainerReusablePool.getInstance().releaseContainerByName("Caixa", "Caixa-1");
+            ContainerReusablePool.getInstance().releaseContainerByName("Embalagem", "Embalagem-1");
+            ContainerReusablePool.getInstance().releaseContainerByName("Embalagem", "Embalagem-2");
+
+            //Percentagem
+            System.out.println(faturaTransporte.getPercentagem(idFatura));
+            //Descritivo
+            System.out.println(faturaTransporte.getDescritivoFatura(idFatura));
+
+            //Finish
+            System.out.println("FINISH");
+
+
+        } catch (ContainerNotFoundException | UserNotFoundException | FaturaTransporteNotFoundException | NullPercentagemException e) {
             e.printStackTrace();
         }
 
-        
+
     }
 
 }

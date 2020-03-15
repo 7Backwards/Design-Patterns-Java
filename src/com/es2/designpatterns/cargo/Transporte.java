@@ -1,4 +1,6 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.cargo;
+
+import com.es2.designpatterns.users.User;
 
 public abstract class Transporte {
 

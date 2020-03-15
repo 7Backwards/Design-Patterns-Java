@@ -2,6 +2,7 @@ package com.es2.designpatterns;
 
 
 import com.es2.designpatterns.exceptions.UserNotFoundException;
+import com.es2.designpatterns.users.UserManager;
 import org.junit.Test;
 
     public class LoginTest {

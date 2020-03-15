@@ -1,4 +1,4 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.users;
 
 public interface User {
 

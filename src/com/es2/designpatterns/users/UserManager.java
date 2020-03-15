@@ -1,4 +1,4 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.users;
 
 import com.es2.designpatterns.exceptions.UserNotFoundException;
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
@@ -86,8 +86,10 @@ public class UserManager {
     public User getAvailableMotorista() throws UserNotFoundException{
 
         for (Map.Entry<String, User> userEntry : mUserList.entrySet()) {
-            if(userEntry.getValue().getClass().equals(Motorista.class) && (((Motorista) userEntry.getValue()).getStatus()))
+            if(userEntry.getValue().getClass().equals(Motorista.class) && (((Motorista) userEntry.getValue()).getStatus())) {
+                ((Motorista) userEntry.getValue()).toggleStatus();
                 return userEntry.getValue();
+            }
         }
 
         throw new UserNotFoundException();
@@ -103,6 +105,7 @@ public class UserManager {
         for (Map.Entry<String, User> userEntry : mUserList.entrySet()) {
             if(userEntry.getValue().getClass().equals(Motorista.class) && !(((Motorista) userEntry.getValue()).getStatus()))
                 ((Motorista) userEntry.getValue()).toggleStatus();
+            return;
         }
 
         throw new UserNotFoundException();
