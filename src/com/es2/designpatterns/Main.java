@@ -1,5 +1,6 @@
 package com.es2.designpatterns;
 
+import com.es2.designpatterns.exceptions.ContainerFullException;
 import com.es2.designpatterns.exceptions.ContainerNotFoundException;
 import com.es2.designpatterns.exceptions.ContainerPoolMaxedOutException;
 import com.es2.designpatterns.exceptions.UserNotFoundException;
@@ -7,7 +8,7 @@ import com.es2.designpatterns.exceptions.UserNotFoundException;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ContainerFullException {
 
         System.out.println("Software meDelivery:");
 
@@ -60,25 +61,46 @@ public class Main {
         Container containerx = new Container();
         Container containery = new Container();
         Container containerz = new Container();
-        Medicine medicine = new Medicine();
+        Medicamento medicamento1 = new Medicamento();
+        Medicamento medicamento2 = new Medicamento();
+        Medicamento medicamento3 = new Medicamento();
 
-        containerx.setName("A");
-        containery.setName("B");
-        containerz.setName("C");
+        containerx.setName("A-");
+        containery.setName("B-");
+        containerz.setName("C-");
+        mainC.setSize(10);
+        containerx.setSize(9);
+        containery.setSize(8);
+        containerz.setSize(7);
 
-        mainC.setName("MAINC");
-        medicine.setName("AAS");
-        medicine.setQuantity(10);
-        medicine.setUnitValue(2);
+        mainC.setName("MAINC-");
+        medicamento1.setSize(1);
+        medicamento1.setName("AAS");
+        medicamento1.setQuantity(10);
+        medicamento1.setUnitValue(2);
+        medicamento2.setSize(2);
+        medicamento2.setName("Pantoc");
+        medicamento2.setQuantity(1);
+        medicamento2.setUnitValue(5);
+        medicamento3.setSize(2);
+        medicamento3.setName("Diazepam");
+        medicamento3.setQuantity(7);
+        medicamento3.setUnitValue(5);
 
         mainC.addTransporte(containerx);
         containerx.addTransporte(containery);
         containery.addTransporte(containerz);
-        containerz.addTransporte(medicine);
+        containerz.addTransporte(medicamento1);
+        containerz.addTransporte(medicamento2);
+        containerz.addTransporte(medicamento3);
 
-        mainC.getTranporteItems();
+        System.out.println(mainC.getTransporteItems());
 
-        
+        System.out.println((mainC.getTransporteTotalPrice()));
+
+
+
+    //Test
 
 
     }

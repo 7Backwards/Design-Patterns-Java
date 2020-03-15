@@ -1,6 +1,6 @@
 package com.es2.designpatterns;
 
-public class Medicine extends Transporte {
+public class Medicamento extends Transporte {
 
     private int quantity;
     private float unitValue;
@@ -19,7 +19,14 @@ public class Medicine extends Transporte {
 
 
     @Override
-    public void getTranporteItems() {
-        System.out.println(getName() + " -> Value: " + getMedicineValue());
+    public String getTransporteItems() {
+
+        //System.out.print(getName() + " -> Value: " + getMedicineValue());
+        return getName() + " -> Value: " + getMedicineValue();
+    }
+
+    @Override
+    public float getTransporteTotalPrice() {
+        return getMedicineValue();
     }
 }

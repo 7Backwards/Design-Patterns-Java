@@ -51,11 +51,11 @@ public class ContainerReusablePool {
 
     /**
      *
-     * @param type
-     * @param nome
-     * @param size
-     * @throws ContainerPoolMaxedOutException
-     * @throws ContainerNotFoundException
+     * @param type Only Container type accepted for now
+     * @param nome Container Name
+     * @param size Container Size
+     * @throws ContainerPoolMaxedOutException Max container number achieved
+     * @throws ContainerNotFoundException Container type not found
      */
     public synchronized void addContainer(String type, String nome, int size) throws ContainerPoolMaxedOutException, ContainerNotFoundException {
 
@@ -97,9 +97,9 @@ public class ContainerReusablePool {
 
     /**
      *
-     * @param name
-     * @return
-     * @throws ContainerNotFoundException
+     * @param name Container Name
+     * @return return container if available
+     * @throws ContainerNotFoundException Exception if container name not found or no containers available
      */
     public synchronized Container getContainer(String name) throws ContainerNotFoundException {
 
@@ -130,10 +130,10 @@ public class ContainerReusablePool {
 
     /**
      *
-     * @param usedArray
-     * @param freeArray
-     * @param MaxSize
-     * @return
+     * @param usedArray Unavailable Container Array
+     * @param freeArray Available Container Array
+     * @param MaxSize Array max size
+     * @return Available container or Null
      */
     private Container getContainerByType(ArrayList<Container> usedArray, ArrayList<Container> freeArray, int MaxSize) {
         if(usedArray.size() >= MaxSize)

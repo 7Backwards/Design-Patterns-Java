@@ -25,5 +25,7 @@ public abstract class Transporte {
         this.size = size;
     }
 
-    public abstract void getTranporteItems();
+    public abstract String getTransporteItems();
+
+    public abstract float getTransporteTotalPrice();
 }

@@ -19,7 +19,7 @@ public abstract class FactoryContainer {
             case "Container":
                 return new Container();
             case "Medicamento":
-                return new Medicine();
+                return new Medicamento();
             default:
                 throw new ContainerTypeNotFoundException();
         }
