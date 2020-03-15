@@ -1,4 +1,4 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.cargo;
 
 import com.es2.designpatterns.exceptions.ContainerTypeNotFoundException;
 
@@ -19,7 +19,7 @@ public abstract class FactoryContainer {
             case "Container":
                 return new Container();
             case "Medicamento":
-                return new Medicine();
+                return new Medicamento();
             default:
                 throw new ContainerTypeNotFoundException();
         }

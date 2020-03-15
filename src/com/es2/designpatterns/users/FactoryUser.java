@@ -1,4 +1,4 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.users;
 
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
 
