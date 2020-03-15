@@ -83,11 +83,26 @@ public class UserManager {
      * @return  available motorista username
      * @throws UserNotFoundException if no available motoristas
      */
-    public String getAvailableMotorista() throws UserNotFoundException{
+    public User getAvailableMotorista() throws UserNotFoundException{
 
         for (Map.Entry<String, User> userEntry : mUserList.entrySet()) {
             if(userEntry.getValue().getClass().equals(Motorista.class) && (((Motorista) userEntry.getValue()).getStatus()))
-                return userEntry.getKey();
+                return userEntry.getValue();
+        }
+
+        throw new UserNotFoundException();
+    }
+
+    /**
+     *
+     * @param username Motorista Username to free
+     * @throws UserNotFoundException if username not found or status available
+     */
+    public void freeMotorista(String username) throws UserNotFoundException {
+
+        for (Map.Entry<String, User> userEntry : mUserList.entrySet()) {
+            if(userEntry.getValue().getClass().equals(Motorista.class) && !(((Motorista) userEntry.getValue()).getStatus()))
+                ((Motorista) userEntry.getValue()).toggleStatus();
         }
 
         throw new UserNotFoundException();

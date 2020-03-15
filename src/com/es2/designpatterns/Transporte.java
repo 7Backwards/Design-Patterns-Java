@@ -4,6 +4,7 @@ public abstract class Transporte {
 
     private String name;
     private int size;
+    private User motoristaInCharge;
 
     public Transporte() {
 
@@ -23,6 +24,14 @@ public abstract class Transporte {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public User getMotoristaInCharge() {
+        return motoristaInCharge;
+    }
+
+    public void setMotoristaInCharge(User motoristaInCharge) {
+        this.motoristaInCharge = motoristaInCharge;
     }
 
     public abstract String getTransporteItems();

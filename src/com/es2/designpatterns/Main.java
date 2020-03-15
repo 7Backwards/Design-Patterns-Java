@@ -13,20 +13,23 @@ public class Main {
         System.out.println("Software meDelivery:");
 
 
-        System.out.println("\nRegisto do Gestor - ");
+
+        System.out.print("\nRegisto do Gestor - ");
         System.out.print(UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin"));
 
-        System.out.println("\nRegisto do Motorista - ");
+        System.out.print("\nRegisto do Motorista 1 - ");
         System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto1", "moto1"));
+        System.out.print("\nRegisto do Motorista 2 - ");
+        System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto2", "moto2"));
 
-        System.out.println("\nLogin do Gestor - ");
+        System.out.print("\nLogin do Gestor - ");
         try {
             System.out.print(UserManager.getInstanceLogin().loginUser("admin", "admin"));
         } catch (UserNotFoundException e) {
             e.printStackTrace();
         }
 
-        System.out.println("\nLogin do Motorista Falhado - ");
+        System.out.print("\nLogin do Motorista Falhado - ");
         try {
             System.out.println(UserManager.getInstanceLogin().loginUser("moto1", "moto2"));
         } catch (UserNotFoundException e) {
@@ -102,6 +105,7 @@ public class Main {
 
     //Test
 
-
+        
     }
+
 }
