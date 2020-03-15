@@ -6,7 +6,6 @@ import com.es2.designpatterns.cargo.Medicamento;
 import com.es2.designpatterns.exceptions.*;
 import com.es2.designpatterns.invoice.FaturaTransporte;
 import com.es2.designpatterns.invoice.FaturaTransportePeriodoNormal;
-import com.es2.designpatterns.users.User;
 import com.es2.designpatterns.users.UserManager;
 
 public class Main {
