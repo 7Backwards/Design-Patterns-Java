@@ -22,8 +22,8 @@ public class Container extends Transporte {
 
         StringBuilder response = new StringBuilder();
 
-        System.out.print(getName());
-        response.append(getName());
+        //System.out.print(getName());
+        response.append(getName()).append("\n");
         for (Transporte transporte : mTransportes) {
             response.append(transporte.getTransporteItems());
         }

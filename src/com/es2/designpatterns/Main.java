@@ -12,8 +12,6 @@ public class Main {
 
         System.out.println("Software meDelivery:");
 
-
-
         System.out.print("\nRegisto do Gestor - ");
         System.out.print(UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin"));
 
@@ -36,29 +34,91 @@ public class Main {
             e.printStackTrace();
         }
 
-
+        //Adicionar Container objects to ContainerReusablePool
         try {
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
+            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
+            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
+
             ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+            ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
+            ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
+            ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
+            ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
+            ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
+
             ContainerReusablePool.getInstance().addContainer("Container", "Embalagem", 1);
+            ContainerReusablePool.getInstance().addContainer("Container", "Embalagem", 1);
+            ContainerReusablePool.getInstance().addContainer("Container", "Embalagem", 1);
+            ContainerReusablePool.getInstance().addContainer("Container", "Embalagem", 1);
+            ContainerReusablePool.getInstance().addContainer("Container", "Embalagem", 1);
+
+            //Error - container limit 3
             ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
         } catch (ContainerPoolMaxedOutException | ContainerNotFoundException e) {
             e.printStackTrace();
         }
 
+        //Test get Container then 2 free container
         try {
-            Container container = ContainerReusablePool.getInstance().getContainer("Caixa");
+            Container container = ContainerReusablePool.getInstance().getContainer("Contentor");
             System.out.println(container.getName());
+            container.setName("teste");
+            ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "teste");
+            //ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "teste");
             //Container container1 = ContainerReusablePool.getInstance().getContainer("Caixa");
             //System.out.println(container1.getName());
         } catch (ContainerNotFoundException e) {
             e.printStackTrace();
         }
 
+        //Test Create Cargo
+        try {
+            Container Cargo = ContainerReusablePool.getInstance().getContainer("Contentor");
+            Cargo.setName("Cargo-1");
+            Cargo.setMotoristaInCharge(UserManager.getInstanceLogin().getAvailableMotorista());
+            //Add "Containers"
+            Container caixa1 = ContainerReusablePool.getInstance().getContainer("Caixa");
+            caixa1.setName("Caixa-1");
+            Container embalagem1 = ContainerReusablePool.getInstance().getContainer("Embalagem");
+            embalagem1.setName("Embalagem-1");
+            Medicamento medicamento1 = new Medicamento();
+            medicamento1.setName("Aspirina");
+            medicamento1.setSize(1);
+            medicamento1.setQuantity(10);
+            medicamento1.setUnitValue(5);
 
+            Container embalagem2 = ContainerReusablePool.getInstance().getContainer("Embalagem");
+            embalagem2.setName("Embalagem-2");
+            Medicamento medicamento2 = new Medicamento();
+            medicamento2.setName("Gutalax");
+            medicamento2.setSize(1);
+            medicamento2.setQuantity(1);
+            medicamento2.setUnitValue(7);
+
+            Cargo.addTransporte(caixa1);
+            caixa1.addTransporte(embalagem1);
+            embalagem1.addTransporte(medicamento1);
+            caixa1.addTransporte(embalagem2);
+            embalagem2.addTransporte(medicamento2);
+
+
+            System.out.println(Cargo.getTransporteItems());
+
+            System.out.println((Cargo.getTransporteTotalPrice()));
+
+        } catch (ContainerNotFoundException | UserNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        
+    }
+
+}
+
+
+
+        /*
         //Test composite without restrictions
         Container mainC = new Container();
         Container containerx = new Container();
@@ -100,12 +160,4 @@ public class Main {
         System.out.println(mainC.getTransporteItems());
 
         System.out.println((mainC.getTransporteTotalPrice()));
-
-
-
-    //Test
-
-        
-    }
-
-}
+        */
