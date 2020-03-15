@@ -1,12 +1,11 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.users;
 
-public class Gestor implements User {
+public class Motorista implements User {
 
     private String mUsername;
     private String mPassword;
-
-    protected Gestor() {
-    }
+    private String mCarLicense;
+    private boolean mStatusAvailable = true;
 
     @Override
     public boolean loginUser(String password) {
@@ -27,5 +26,21 @@ public class Gestor implements User {
     @Override
     public void resetPassword(String newPassword) {
         mPassword = newPassword;
+    }
+
+    public void setCarLicense(String carLicenseNr) {
+        mCarLicense = carLicenseNr;
+    }
+
+    public String getCarLicense() {
+        return mCarLicense;
+    }
+
+    public void toggleStatus() {
+        mStatusAvailable = !mStatusAvailable;
+    }
+
+    public boolean getStatus() {
+        return mStatusAvailable;
     }
 }

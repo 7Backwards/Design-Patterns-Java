@@ -1,15 +1,16 @@
-package com.es2.designpatterns;
+package com.es2.designpatterns.users;
 
 import com.es2.designpatterns.exceptions.UserNotFoundException;
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class UserManager {
 
     private static volatile UserManager instanceLogin;
-
     private HashMap<String, User> mUserList;
+
 
     /**
      *
@@ -18,6 +19,7 @@ public class UserManager {
     private UserManager() {
         mUserList = new HashMap<>();
     }
+
 
     /**
      *
@@ -34,6 +36,7 @@ public class UserManager {
         }
         return instanceLogin;
     }
+
 
     /**
      *
@@ -72,6 +75,40 @@ public class UserManager {
         }
 
         return "Registo com sucesso";
+    }
+
+
+    /**
+     *
+     * @return  available motorista username
+     * @throws UserNotFoundException if no available motoristas
+     */
+    public User getAvailableMotorista() throws UserNotFoundException{
+
+        for (Map.Entry<String, User> userEntry : mUserList.entrySet()) {
+            if(userEntry.getValue().getClass().equals(Motorista.class) && (((Motorista) userEntry.getValue()).getStatus())) {
+                ((Motorista) userEntry.getValue()).toggleStatus();
+                return userEntry.getValue();
+            }
+        }
+
+        throw new UserNotFoundException();
+    }
+
+    /**
+     *
+     * @param username Motorista Username to free
+     * @throws UserNotFoundException if username not found or status available
+     */
+    public void freeMotorista(String username) throws UserNotFoundException {
+
+        for (Map.Entry<String, User> userEntry : mUserList.entrySet()) {
+            if(userEntry.getValue().getClass().equals(Motorista.class) && !(((Motorista) userEntry.getValue()).getStatus()))
+                ((Motorista) userEntry.getValue()).toggleStatus();
+            return;
+        }
+
+        throw new UserNotFoundException();
     }
 
 
