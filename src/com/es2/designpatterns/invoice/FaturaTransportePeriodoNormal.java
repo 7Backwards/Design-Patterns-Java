@@ -10,9 +10,6 @@ public class FaturaTransportePeriodoNormal implements FaturaTransporteInterface 
     protected String stringFaturas = "";
     protected Float valorPercentagem;
 
-    public FaturaTransportePeriodoNormal() {
-    }
-
     @Override
     public void setFaturaTransporte(Transporte transporte) throws NullPercentagemException {
         if(valorPercentagem > 0) {

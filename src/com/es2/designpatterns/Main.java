@@ -40,8 +40,8 @@ public class Main {
         //Adicionar Container objects to ContainerReusablePool
         try {
             ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
+            //ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
+            //ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
 
             ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);
             ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 5);

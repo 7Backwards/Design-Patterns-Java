@@ -8,10 +8,6 @@ public abstract class Transporte {
     private int size;
     private User motoristaInCharge;
 
-    public Transporte() {
-
-    }
-
     public String getName() {
         return name;
     }

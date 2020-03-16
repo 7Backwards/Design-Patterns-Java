@@ -69,6 +69,8 @@ public class ContainerReusablePool {
                         tempC.setSize(size);
                         freeContentores.add(tempC);
                     }
+                    else
+                        throw new ContainerPoolMaxedOutException();
                     break;
                 case "Caixa":
                     if (freeCaixas.size() + usedCaixas.size() < maxCaixas) {
@@ -77,6 +79,8 @@ public class ContainerReusablePool {
                         tempC.setSize(size);
                         freeCaixas.add(tempC);
                     }
+                    else
+                        throw new ContainerPoolMaxedOutException();
                     break;
                 case "Embalagem":
                     if (freeEmbalagens.size() + freeEmbalagens.size() < maxEmbalagens) {
@@ -85,6 +89,8 @@ public class ContainerReusablePool {
                         tempC.setSize(size);
                         freeEmbalagens.add(tempC);
                     }
+                    else
+                        throw new ContainerPoolMaxedOutException();
                     break;
                 default:
                     throw new ContainerPoolMaxedOutException();
@@ -148,6 +154,12 @@ public class ContainerReusablePool {
             return null;
     }
 
+    /**
+     *
+     * @param containerTypeName Container type
+     * @param containerName Specific container name
+     * @throws ContainerNotFoundException If container not found
+     */
     public synchronized void releaseContainerByName(String containerTypeName, String containerName) throws ContainerNotFoundException {
 
         switch (containerTypeName) {
