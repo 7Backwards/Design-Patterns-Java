@@ -1,7 +1,6 @@
 package com.es2.designpatterns.cargo;
 
 import com.es2.designpatterns.exceptions.ContainerFullException;
-
 import java.util.ArrayList;
 
 public class Container extends Transporte {
@@ -22,7 +21,6 @@ public class Container extends Transporte {
 
         StringBuilder response = new StringBuilder();
 
-        //System.out.print(getName());
         response.append(getName()).append("\n");
         for (Transporte transporte : mTransportes) {
             response.append(transporte.getTransporteItems());

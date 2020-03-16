@@ -4,14 +4,6 @@ import com.es2.designpatterns.exceptions.ContainerTypeNotFoundException;
 
 public abstract class FactoryContainer {
 
-    /**
-     *
-     */
-    public FactoryContainer() {
-
-    }
-
-
 
     public static Transporte makeContainer(String type) throws ContainerTypeNotFoundException {
 
