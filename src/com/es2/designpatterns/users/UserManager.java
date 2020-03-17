@@ -67,13 +67,9 @@ public class UserManager {
         if(mUserList.get(username) != null)
             throw new UserExistingException();
 
-        try {
-            User newUser = FactoryUser.makeUser(type);
-            newUser.registerUser(username, password);
-            mUserList.put(username, newUser);
-        } catch (UserTypeNotFoundException e) {
-            throw e;
-        }
+        User newUser = FactoryUser.makeUser(type);
+        newUser.registerUser(username, password);
+        mUserList.put(username, newUser);
 
         return "Registo com sucesso";
     }

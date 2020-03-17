@@ -11,6 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserManagerTest {
 
     @Test
+    void testRegisterUser() throws UserTypeNotFoundException, UserExistingException {
+
+        UserManager.getInstanceLogin().registerUser("Gestor", "admin1", "admin1");
+    }
+
+    @Test
     void testUserNotFoundException() {
 
         assertThrows(UserNotFoundException.class,
@@ -20,19 +26,15 @@ class UserManagerTest {
                 });
     }
 
-    @Test
-    void testRegisterUser() throws UserTypeNotFoundException, UserExistingException {
 
-        UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin");
-    }
 
     @Test
     void testLoginExistingUser() throws UserNotFoundException, UserTypeNotFoundException, UserExistingException {
 
         //Registar Gestor
-        UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin");
+        UserManager.getInstanceLogin().registerUser("Gestor", "admin2", "admin2");
         //Testar login do Gestor registado
-        UserManager.getInstanceLogin().loginUser("admin", "admin");
+        UserManager.getInstanceLogin().loginUser("admin2", "admin2");
     }
 
     @Test
@@ -51,8 +53,8 @@ class UserManagerTest {
         assertThrows(UserExistingException.class,
                 ()->{
 
-                    UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin");
-                    UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin");
+                    UserManager.getInstanceLogin().registerUser("Gestor", "admin3", "admin3");
+                    UserManager.getInstanceLogin().registerUser("Gestor", "admin3", "admin3");
                 });
 
     }
