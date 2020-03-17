@@ -13,6 +13,7 @@ public class Main {
 
     public static void main(String[] args) throws ContainerFullException {
 
+        try {
         System.out.println("Software meDelivery:");
 
         System.out.print("\nRegisto do Gestor - ");
@@ -24,9 +25,9 @@ public class Main {
         System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto2", "moto2"));
 
         System.out.print("\nLogin do Gestor - ");
-        try {
+        
             System.out.print(UserManager.getInstanceLogin().loginUser("admin", "admin"));
-        } catch (UserNotFoundException e) {
+        } catch (UserNotFoundException | UserExistingException | UserTypeNotFoundException e) {
             e.printStackTrace();
         }
 
