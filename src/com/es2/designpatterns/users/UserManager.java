@@ -1,5 +1,6 @@
 package com.es2.designpatterns.users;
 
+import com.es2.designpatterns.exceptions.UserExistingException;
 import com.es2.designpatterns.exceptions.UserNotFoundException;
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
 
@@ -61,17 +62,17 @@ public class UserManager {
      * @param password Self-explanatory
      * @return  Different message depending on given params
      */
-    public String registerUser(String type, String username, String password) {
+    public String registerUser(String type, String username, String password) throws UserTypeNotFoundException, UserExistingException {
 
         if(mUserList.get(username) != null)
-            return "Username invalido";
+            throw new UserExistingException();
 
         try {
             User newUser = FactoryUser.makeUser(type);
             newUser.registerUser(username, password);
             mUserList.put(username, newUser);
         } catch (UserTypeNotFoundException e) {
-            return "Tipo de User invalido";
+            throw e;
         }
 
         return "Registo com sucesso";
