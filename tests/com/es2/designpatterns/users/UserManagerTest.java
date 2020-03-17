@@ -21,13 +21,13 @@ class UserManagerTest {
     }
 
     @Test
-    void testRegisterUser() {
+    void testRegisterUser() throws UserTypeNotFoundException, UserExistingException {
 
         UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin");
     }
 
     @Test
-    void testLoginExistingUser() throws UserNotFoundException {
+    void testLoginExistingUser() throws UserNotFoundException, UserTypeNotFoundException, UserExistingException {
 
         //Registar Gestor
         UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin");
