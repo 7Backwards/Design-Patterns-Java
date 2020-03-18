@@ -26,8 +26,6 @@ class UserManagerTest {
                 });
     }
 
-
-
     @Test
     void testLoginExistingUser() throws UserNotFoundException, UserTypeNotFoundException, UserExistingException {
 

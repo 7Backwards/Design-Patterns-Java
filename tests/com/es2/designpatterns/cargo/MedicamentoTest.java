@@ -1,28 +1,32 @@
 package com.es2.designpatterns.cargo;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class MedicamentoTest {
 
     @Test
-    void getMedicineValue() {
+    void testCreateMedicamento() {
+
+        Medicamento medicamento1 = new Medicamento();
+        medicamento1.setName("Aspirina");
+        medicamento1.setSize(1);
+        medicamento1.setQuantity(10);
+        medicamento1.setUnitValue(5);
     }
 
     @Test
-    void setUnitValue() {
+    void testgetMedicineValue() {
+
+        Medicamento medicamento2 = new Medicamento();
+        medicamento2.setName("Aspirina");
+        medicamento2.setSize(1);
+        medicamento2.setQuantity(10);
+        medicamento2.setUnitValue(5);
+        assertEquals(medicamento2.getMedicineValue(), 50.0);
     }
 
-    @Test
-    void setQuantity() {
-    }
 
-    @Test
-    void getTransporteItems() {
-    }
 
-    @Test
-    void getTransporteTotalPrice() {
-    }
+
 }
