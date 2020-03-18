@@ -6,13 +6,6 @@ public abstract class FactoryUser {
 
     /**
      *
-     */
-    public FactoryUser() {
-
-    }
-
-    /**
-     *
      * @param type Type of User to be created
      * @return User object created
      * @throws UserTypeNotFoundException Invalid type

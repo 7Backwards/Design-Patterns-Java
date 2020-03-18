@@ -21,7 +21,6 @@ public class Medicamento extends Transporte {
     @Override
     public String getTransporteItems() {
 
-        //System.out.print(getName() + " -> Value: " + getMedicineValue());
         return getName() + " -> Value: " + getMedicineValue() + "\n";
     }
 
