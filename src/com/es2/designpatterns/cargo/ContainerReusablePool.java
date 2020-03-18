@@ -25,7 +25,7 @@ public class ContainerReusablePool {
      */
     private ContainerReusablePool() {
 
-        this.maxContentores = 1;
+        this.maxContentores = 3;
         this.maxCaixas = 10;
         this.maxEmbalagens = 100;
         // Creates pools

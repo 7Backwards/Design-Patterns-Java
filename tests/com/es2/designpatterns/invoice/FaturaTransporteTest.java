@@ -12,14 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class FaturaTransporteTest {
 
     @Test
-    void testCreateFatura() throws FaturaTransporteNotFoundException, ContainerFullException, ContainerNotFoundException, UserNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException, NullPercentagemException {
+    void testCreateFatura() throws FaturaTransporteNotFoundException, ContainerFullException, ContainerNotFoundException, UserNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException {
 
         //Add Contentor
         ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
         Container Cargo = ContainerReusablePool.getInstance().getContainer("Contentor");
         Cargo.setName("Cargo-1");
+        
         //Create Motorista
-        UserManager.getInstanceLogin().registerUser("Motorista", "moto2", "moto2");
+        UserManager.getInstanceLogin().registerUser("Motorista", "moto1", "moto1");
         Cargo.setMotoristaInCharge(UserManager.getInstanceLogin().getAvailableMotorista());
 
         //Add Caixa
@@ -65,9 +66,9 @@ class FaturaTransporteTest {
     }
 
     @Test
-    void testNullPercentagemException() {
+    void testInvalidPercentagemException() {
 
-        assertThrows(NullPercentagemException.class,
+        assertThrows(InvalidPercentagemException.class,
                 ()->{
                     //Add Contentor
                     ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);

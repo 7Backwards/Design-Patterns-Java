@@ -4,7 +4,7 @@ import com.es2.designpatterns.exceptions.*;
 import com.es2.designpatterns.users.UserManager;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TransporteTest {
 
@@ -39,7 +39,6 @@ class TransporteTest {
         Cargo.addTransporte(caixa1);
         caixa1.addTransporte(embalagem1);
         embalagem1.addTransporte(medicamento1);
-
     }
 
     @Test

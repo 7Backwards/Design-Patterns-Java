@@ -2,7 +2,7 @@ package com.es2.designpatterns.invoice;
 
 import com.es2.designpatterns.cargo.Transporte;
 import com.es2.designpatterns.exceptions.FaturaTransporteNotFoundException;
-import com.es2.designpatterns.exceptions.NullPercentagemException;
+import com.es2.designpatterns.exceptions.InvalidPercentagemException;
 
 public class FaturaTransportePeriodoEspecial implements FaturaTransporteInterface {
 
@@ -11,7 +11,7 @@ public class FaturaTransportePeriodoEspecial implements FaturaTransporteInterfac
     protected Float valorPercentagem;
 
     @Override
-    public void setFaturaTransporte(Transporte transporte) throws NullPercentagemException {
+    public void setFaturaTransporte(Transporte transporte) throws InvalidPercentagemException {
         if(valorPercentagem > 0) {
             stringFaturas = transporte.getTransporteItems() +
                     "\nValor Total da Carga - " + transporte.getTransporteTotalPrice() +
@@ -20,7 +20,7 @@ public class FaturaTransportePeriodoEspecial implements FaturaTransporteInterfac
                     "\nTipo de Transporte - " + this.getClass();
         }
         else {
-            throw new NullPercentagemException();
+            throw new InvalidPercentagemException();
         }
     }
 
@@ -33,15 +33,18 @@ public class FaturaTransportePeriodoEspecial implements FaturaTransporteInterfac
     }
 
     @Override
-    public void setPercentagem(Float percentagem) {
-        this.valorPercentagem = percentagem;
+    public void setPercentagem(Float percentagem) throws InvalidPercentagemException {
+        if (percentagem == null || percentagem <= 0)
+            throw new InvalidPercentagemException();
+        else
+            this.valorPercentagem = percentagem;
     }
 
     @Override
-    public Float getPercentagem() throws NullPercentagemException {
+    public Float getPercentagem() throws InvalidPercentagemException {
         if (valorPercentagem > 0)
             return valorPercentagem;
         else
-            throw new NullPercentagemException();
+            throw new InvalidPercentagemException();
     }
 }

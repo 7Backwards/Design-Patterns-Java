@@ -1,7 +1,6 @@
 package com.es2.designpatterns.cargo;
 
 import static org.junit.jupiter.api.Assertions.*;
-import com.es2.designpatterns.cargo.Medicamento;
 import org.junit.jupiter.api.Test;
 
 class MedicamentoTest {

@@ -134,7 +134,7 @@ public class Main {
             System.out.println("FINISH");
 
 
-        } catch (ContainerNotFoundException | UserNotFoundException | FaturaTransporteNotFoundException | NullPercentagemException e) {
+        } catch (ContainerNotFoundException | UserNotFoundException | FaturaTransporteNotFoundException | InvalidPercentagemException e) {
             e.printStackTrace();
         }
 

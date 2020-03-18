@@ -1,10 +1,7 @@
 package com.es2.designpatterns.cargo;
 
-import com.es2.designpatterns.exceptions.ContainerFullException;
 import com.es2.designpatterns.exceptions.ContainerNotFoundException;
 import com.es2.designpatterns.exceptions.ContainerPoolMaxedOutException;
-import com.es2.designpatterns.exceptions.UserNotFoundException;
-import com.es2.designpatterns.users.UserManager;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,6 +30,8 @@ class ContainerReusablePoolTest {
         assertThrows(ContainerPoolMaxedOutException.class,
                 ()->{
 
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
                     ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
                     ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
                 });
