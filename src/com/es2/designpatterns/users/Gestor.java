@@ -6,7 +6,6 @@ public class Gestor implements User {
     private String mPassword;
 
     /**
-     *
      * @param password Login received password
      * @return True if password match else false
      */
@@ -16,7 +15,6 @@ public class Gestor implements User {
     }
 
     /**
-     *
      * @param username Set new user username
      * @param password Set new user password
      */
@@ -27,7 +25,6 @@ public class Gestor implements User {
     }
 
     /**
-     *
      * @return Username
      */
     @Override
@@ -36,7 +33,6 @@ public class Gestor implements User {
     }
 
     /**
-     *
      * @param newPassword set new password
      */
     @Override
