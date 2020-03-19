@@ -158,6 +158,7 @@ public class ContainerReusablePool {
                     if (container.getName().equals(containerName)) {
                         freeContentores.add(container);
                         usedContentores.remove(container);
+                        container.dropCarga();
                         return;
                     }
                 }
@@ -183,5 +184,17 @@ public class ContainerReusablePool {
             default:
                 throw new ContainerNotFoundException();
         }
+    }
+
+    /**
+     * Reset pool for testing purpose
+     */
+    public synchronized void resetContainers() {
+        this.freeContentores.clear();
+        this.usedContentores.clear();
+        this.freeCaixas.clear();
+        this.usedCaixas.clear();
+        this.freeEmbalagens.clear();
+        this.usedEmbalagens.clear();
     }
 }

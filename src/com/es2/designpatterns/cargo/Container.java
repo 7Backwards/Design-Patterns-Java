@@ -9,12 +9,13 @@ public class Container extends Carga {
 
     public void addCarga(Carga carga) throws ContainerFullException {
 
-        if (this.getSize() - carga.getSize() >= 0)
+        if (this.getSize() - carga.getSize() >= 0) {
+            this.setSize(this.getSize() - carga.getSize());
             mCargas.add(carga);
+        }
         else
             throw new ContainerFullException();
     }
-
 
     @Override
     public String getCargaItems() {
@@ -35,5 +36,13 @@ public class Container extends Carga {
             totalPrice += carga.getCargaTotalPrice();
         }
         return totalPrice;
+    }
+
+    @Override
+    public void dropCarga() {
+        for (Carga carga : mCargas) {
+            carga.dropCarga();
+        }
+        mCargas.clear();
     }
 }

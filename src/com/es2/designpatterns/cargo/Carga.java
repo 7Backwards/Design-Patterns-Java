@@ -35,4 +35,6 @@ public abstract class Carga {
     public abstract String getCargaItems();
 
     public abstract float getCargaTotalPrice();
+
+    public abstract void dropCarga();
 }

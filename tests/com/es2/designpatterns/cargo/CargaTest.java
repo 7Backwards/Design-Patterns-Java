@@ -12,7 +12,7 @@ class CargaTest {
     void testCarga() throws ContainerNotFoundException, UserNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException, ContainerPoolMaxedOutException {
 
         //Create Contentor
-        ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
+        ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
         Container Cargo = ContainerReusablePool.getInstance().getContainer("Contentor");
         Cargo.setName("Cargo-1");
         UserManager.getInstanceLogin().registerUser("Motorista", "moto1", "moto1");
@@ -39,6 +39,10 @@ class CargaTest {
         Cargo.addCarga(caixa1);
         caixa1.addCarga(embalagem1);
         embalagem1.addCarga(medicamento1);
+
+        ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-1");
+        ContainerReusablePool.getInstance().releaseContainerByName("Caixa", "Caixa-1");
+        ContainerReusablePool.getInstance().releaseContainerByName("Embalagem", "Embalagem-1");
     }
 
     @Test

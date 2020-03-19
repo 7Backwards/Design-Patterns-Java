@@ -28,4 +28,8 @@ public class Medicamento extends Carga {
     public float getCargaTotalPrice() {
         return getMedicineValue();
     }
+
+    @Override
+    public void dropCarga() {
+    }
 }

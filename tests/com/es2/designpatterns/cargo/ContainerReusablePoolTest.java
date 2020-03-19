@@ -10,7 +10,7 @@ class ContainerReusablePoolTest {
 
     @Test
     void testaddContainer() throws ContainerNotFoundException, ContainerPoolMaxedOutException {
-        ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 30);
+        ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 10);
     }
 
     @Test
@@ -19,7 +19,7 @@ class ContainerReusablePoolTest {
         assertThrows(ContainerNotFoundException.class,
                 () -> {
 
-                    ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 30);
+                    ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 10);
                     Container container = ContainerReusablePool.getInstance().getContainer("NonExistName");
                 });
     }

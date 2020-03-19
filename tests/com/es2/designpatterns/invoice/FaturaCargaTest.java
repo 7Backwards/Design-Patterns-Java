@@ -14,12 +14,9 @@ class FaturaCargaTest {
     @Test
     void testCreateFatura() throws FaturaCargaNotFoundException, ContainerFullException, ContainerNotFoundException, UserNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException {
 
-        try {
-            //Add Contentor
-            ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-        }catch (ContainerPoolMaxedOutException e) {
-            ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-1");
-        }
+        ContainerReusablePool.getInstance().resetContainers();
+        //Add Contentor
+        ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
         Container Cargo = ContainerReusablePool.getInstance().getContainer("Contentor");
         Cargo.setName("Cargo-1");
 
@@ -74,17 +71,10 @@ class FaturaCargaTest {
 
         assertThrows(InvalidPercentagemException.class,
                 () -> {
-                    Container Cargo2;
-                    try {
-                        //Add Contentor
-                        ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-                    }catch (ContainerPoolMaxedOutException e) {
-                        ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-1");
-                        ContainerReusablePool.getInstance().releaseContainerByName("Caixa", "Caixa-1");
-                        ContainerReusablePool.getInstance().releaseContainerByName("Embalagem", "Embalagem-1");
-
-                    }
-                    Cargo2 = ContainerReusablePool.getInstance().getContainer("Contentor");
+                    ContainerReusablePool.getInstance().resetContainers();
+                    //Add Contentor
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+                    Container Cargo2 = ContainerReusablePool.getInstance().getContainer("Contentor");
                     Cargo2.setName("Cargo-2");
                     //Create Motorista
                     UserManager.getInstanceLogin().registerUser("Motorista", "moto2", "moto2");
