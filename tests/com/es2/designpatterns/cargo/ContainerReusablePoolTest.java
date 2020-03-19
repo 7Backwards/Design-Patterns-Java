@@ -4,7 +4,7 @@ import com.es2.designpatterns.exceptions.ContainerNotFoundException;
 import com.es2.designpatterns.exceptions.ContainerPoolMaxedOutException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ContainerReusablePoolTest {
 
@@ -17,7 +17,7 @@ class ContainerReusablePoolTest {
     void testContainerNotFoundException() {
 
         assertThrows(ContainerNotFoundException.class,
-                ()->{
+                () -> {
 
                     ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 30);
                     Container container = ContainerReusablePool.getInstance().getContainer("NonExistName");
@@ -28,7 +28,7 @@ class ContainerReusablePoolTest {
     void testContainerPoolMaxedOutException() {
 
         assertThrows(ContainerPoolMaxedOutException.class,
-                ()->{
+                () -> {
 
                     ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
                     ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);

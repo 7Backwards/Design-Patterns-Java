@@ -1,6 +1,6 @@
 package com.es2.designpatterns.cargo;
 
-public class Medicamento extends Transporte {
+public class Medicamento extends Carga {
 
     private int quantity;
     private float unitValue;
@@ -19,13 +19,13 @@ public class Medicamento extends Transporte {
 
 
     @Override
-    public String getTransporteItems() {
+    public String getCargaItems() {
 
         return getName() + " -> Value: " + getMedicineValue() + "\n";
     }
 
     @Override
-    public float getTransporteTotalPrice() {
+    public float getCargaTotalPrice() {
         return getMedicineValue();
     }
 }

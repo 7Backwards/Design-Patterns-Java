@@ -4,8 +4,8 @@ import com.es2.designpatterns.cargo.Container;
 import com.es2.designpatterns.cargo.ContainerReusablePool;
 import com.es2.designpatterns.cargo.Medicamento;
 import com.es2.designpatterns.exceptions.*;
-import com.es2.designpatterns.invoice.FaturaTransporte;
-import com.es2.designpatterns.invoice.FaturaTransportePeriodoNormal;
+import com.es2.designpatterns.invoice.FaturaCarga;
+import com.es2.designpatterns.invoice.FaturaCargaPeriodoNormal;
 import com.es2.designpatterns.users.UserManager;
 
 public class Main {
@@ -14,18 +14,18 @@ public class Main {
     public static void main(String[] args) throws ContainerFullException {
 
         try {
-        System.out.println("Software meDelivery:");
+            System.out.println("Software meDelivery:");
 
-        System.out.print("\nRegisto do Gestor - ");
-        System.out.print(UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin"));
+            System.out.print("\nRegisto do Gestor - ");
+            System.out.print(UserManager.getInstanceLogin().registerUser("Gestor", "admin", "admin"));
 
-        System.out.print("\nRegisto do Motorista 1 - ");
-        System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto1", "moto1"));
-        System.out.print("\nRegisto do Motorista 2 - ");
-        System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto2", "moto2"));
+            System.out.print("\nRegisto do Motorista 1 - ");
+            System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto1", "moto1"));
+            System.out.print("\nRegisto do Motorista 2 - ");
+            System.out.print(UserManager.getInstanceLogin().registerUser("Motorista", "moto2", "moto2"));
 
-        System.out.print("\nLogin do Gestor - ");
-        
+            System.out.print("\nLogin do Gestor - ");
+
             System.out.print(UserManager.getInstanceLogin().loginUser("admin", "admin"));
         } catch (UserNotFoundException | UserExistingException | UserTypeNotFoundException e) {
             e.printStackTrace();
@@ -100,23 +100,23 @@ public class Main {
             medicamento2.setQuantity(1);
             medicamento2.setUnitValue(7);
 
-            Cargo.addTransporte(caixa1);
-            caixa1.addTransporte(embalagem1);
-            embalagem1.addTransporte(medicamento1);
-            caixa1.addTransporte(embalagem2);
-            embalagem2.addTransporte(medicamento2);
+            Cargo.addCarga(caixa1);
+            caixa1.addCarga(embalagem1);
+            embalagem1.addCarga(medicamento1);
+            caixa1.addCarga(embalagem2);
+            embalagem2.addCarga(medicamento2);
 
 
-            System.out.println(Cargo.getTransporteItems());
+            System.out.println(Cargo.getCargaItems());
 
-            System.out.println((Cargo.getTransporteTotalPrice()));
+            System.out.println((Cargo.getCargaTotalPrice()));
 
 
             //Test create invoice
-            FaturaTransporte faturaTransporte = new FaturaTransporte();
-            int idFatura = faturaTransporte.addFatura(new FaturaTransportePeriodoNormal());
-            faturaTransporte.setPercentagem(idFatura, (float)50);
-            faturaTransporte.setFatura(idFatura, Cargo);
+            FaturaCarga faturaCarga = new FaturaCarga();
+            int idFatura = faturaCarga.addFatura(new FaturaCargaPeriodoNormal());
+            faturaCarga.setPercentagem(idFatura, (float) 50);
+            faturaCarga.setFatura(idFatura, Cargo);
             //Release Motorista
             UserManager.getInstanceLogin().freeMotorista(Cargo.getMotoristaInCharge().getUsername());
             //Release Containers
@@ -126,15 +126,15 @@ public class Main {
             ContainerReusablePool.getInstance().releaseContainerByName("Embalagem", "Embalagem-2");
 
             //Percentagem
-            System.out.println(faturaTransporte.getPercentagem(idFatura));
+            System.out.println(faturaCarga.getPercentagem(idFatura));
             //Descritivo
-            System.out.println(faturaTransporte.getDescritivoFatura(idFatura));
+            System.out.println(faturaCarga.getDescritivoFatura(idFatura));
 
             //Finish
             System.out.println("FINISH");
 
 
-        } catch (ContainerNotFoundException | UserNotFoundException | FaturaTransporteNotFoundException | InvalidPercentagemException e) {
+        } catch (ContainerNotFoundException | UserNotFoundException | FaturaCargaNotFoundException | InvalidPercentagemException e) {
             e.printStackTrace();
         }
 
@@ -177,14 +177,14 @@ public class Main {
         medicamento3.setQuantity(7);
         medicamento3.setUnitValue(5);
 
-        mainC.addTransporte(containerx);
-        containerx.addTransporte(containery);
-        containery.addTransporte(containerz);
-        containerz.addTransporte(medicamento1);
-        containerz.addTransporte(medicamento2);
-        containerz.addTransporte(medicamento3);
+        mainC.addCarga(containerx);
+        containerx.addCarga(containery);
+        containery.addCarga(containerz);
+        containerz.addCarga(medicamento1);
+        containerz.addCarga(medicamento2);
+        containerz.addCarga(medicamento3);
 
-        System.out.println(mainC.getTransporteItems());
+        System.out.println(mainC.getCargaItems());
 
-        System.out.println((mainC.getTransporteTotalPrice()));
+        System.out.println((mainC.getCargaTotalPrice()));
         */

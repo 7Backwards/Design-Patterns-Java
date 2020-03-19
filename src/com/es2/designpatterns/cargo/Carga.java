@@ -2,7 +2,7 @@ package com.es2.designpatterns.cargo;
 
 import com.es2.designpatterns.users.User;
 
-public abstract class Transporte {
+public abstract class Carga {
 
     private String name;
     private int size;
@@ -32,7 +32,7 @@ public abstract class Transporte {
         this.motoristaInCharge = motoristaInCharge;
     }
 
-    public abstract String getTransporteItems();
+    public abstract String getCargaItems();
 
-    public abstract float getTransporteTotalPrice();
+    public abstract float getCargaTotalPrice();
 }

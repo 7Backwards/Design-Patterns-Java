@@ -1,6 +1,6 @@
 package com.es2.designpatterns.exceptions;
 
-public class FaturaTransporteNotFoundException extends Exception {
-    
+public class FaturaCargaNotFoundException extends Exception {
+
     static final long serialVersionUID = 1L;
 }

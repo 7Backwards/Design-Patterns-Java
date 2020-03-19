@@ -21,7 +21,7 @@ public class ContainerReusablePool {
 
 
     /**
-     *  Container reusable pool constructor
+     * Container reusable pool constructor
      */
     private ContainerReusablePool() {
 
@@ -38,7 +38,6 @@ public class ContainerReusablePool {
     }
 
     /**
-     *
      * @return Container Pool instance
      */
     public static ContainerReusablePool getInstance() {
@@ -50,17 +49,16 @@ public class ContainerReusablePool {
     }
 
     /**
-     *
      * @param type Only Container type accepted for now
      * @param nome Container Name
      * @param size Container Size
      * @throws ContainerPoolMaxedOutException Max container number achieved
-     * @throws ContainerNotFoundException Container type not found
+     * @throws ContainerNotFoundException     Container type not found
      */
     public synchronized void addContainer(String type, String nome, int size) throws ContainerPoolMaxedOutException, ContainerNotFoundException {
 
         Container tempC;
-        if(type.equals("Container")) {
+        if (type.equals("Container")) {
             switch (nome) {
                 case "Contentor":
                     if (freeContentores.size() + usedContentores.size() < maxContentores) {
@@ -68,8 +66,7 @@ public class ContainerReusablePool {
                         tempC.setName(nome);
                         tempC.setSize(size);
                         freeContentores.add(tempC);
-                    }
-                    else
+                    } else
                         throw new ContainerPoolMaxedOutException();
                     break;
                 case "Caixa":
@@ -78,8 +75,7 @@ public class ContainerReusablePool {
                         tempC.setName(nome);
                         tempC.setSize(size);
                         freeCaixas.add(tempC);
-                    }
-                    else
+                    } else
                         throw new ContainerPoolMaxedOutException();
                     break;
                 case "Embalagem":
@@ -88,21 +84,18 @@ public class ContainerReusablePool {
                         tempC.setName(nome);
                         tempC.setSize(size);
                         freeEmbalagens.add(tempC);
-                    }
-                    else
+                    } else
                         throw new ContainerPoolMaxedOutException();
                     break;
                 default:
                     throw new ContainerPoolMaxedOutException();
             }
-        }
-        else
+        } else
             throw new ContainerNotFoundException();
     }
 
 
     /**
-     *
      * @param containerTypeName Container Name
      * @return return container if available
      * @throws ContainerNotFoundException Exception if container name not found or no containers available
@@ -113,83 +106,80 @@ public class ContainerReusablePool {
         switch (containerTypeName) {
             case "Contentor":
                 tempC = getContainerByType(usedContentores, freeContentores, maxContentores);
-                if(tempC != null)
+                if (tempC != null)
                     return tempC;
                 else
-                    throw  new ContainerNotFoundException();
+                    throw new ContainerNotFoundException();
             case "Caixa":
                 tempC = getContainerByType(usedCaixas, freeCaixas, maxCaixas);
-                if(tempC != null)
+                if (tempC != null)
                     return tempC;
                 else
-                    throw  new ContainerNotFoundException();
+                    throw new ContainerNotFoundException();
             case "Embalagem":
                 tempC = getContainerByType(usedEmbalagens, freeEmbalagens, maxEmbalagens);
-                if(tempC != null)
+                if (tempC != null)
                     return tempC;
                 else
-                    throw  new ContainerNotFoundException();
+                    throw new ContainerNotFoundException();
             default:
                 throw new ContainerNotFoundException();
         }
     }
 
     /**
-     *
      * @param usedArray Unavailable Container Array
      * @param freeArray Available Container Array
-     * @param MaxSize Array max size
+     * @param MaxSize   Array max size
      * @return Available container or Null
      */
     private synchronized Container getContainerByType(ArrayList<Container> usedArray, ArrayList<Container> freeArray, int MaxSize) {
-        if(usedArray.size() >= MaxSize)
+        if (usedArray.size() >= MaxSize)
             return null;
         else if (freeArray.size() > 0) {
             Container tempC = freeArray.get(0);
             freeArray.remove(0);
             usedArray.add(tempC);
             return tempC;
-        }
-        else
+        } else
             return null;
     }
 
     /**
-     *
      * @param containerTypeName Container type
-     * @param containerName Specific container name
+     * @param containerName     Specific container name
      * @throws ContainerNotFoundException If container not found
      */
     public synchronized void releaseContainerByName(String containerTypeName, String containerName) throws ContainerNotFoundException {
 
         switch (containerTypeName) {
             case "Contentor":
-                for(Container container : usedContentores) {
+                for (Container container : usedContentores) {
                     if (container.getName().equals(containerName)) {
                         freeContentores.add(container);
                         usedContentores.remove(container);
                         return;
                     }
                 }
-                throw  new ContainerNotFoundException();
+                throw new ContainerNotFoundException();
             case "Caixa":
-                for(Container container : usedCaixas) {
+                for (Container container : usedCaixas) {
                     if (container.getName().equals(containerName)) {
                         freeCaixas.add(container);
                         usedCaixas.remove(container);
                         return;
                     }
                 }
-                throw  new ContainerNotFoundException();
+                throw new ContainerNotFoundException();
             case "Embalagem":
-                for(Container container : usedEmbalagens) {
+                for (Container container : usedEmbalagens) {
                     if (container.getName().equals(containerName)) {
                         freeEmbalagens.add(container);
                         usedEmbalagens.remove(container);
                         return;
                     }
                 }
-                throw  new ContainerNotFoundException();
+                throw new ContainerNotFoundException();
             default:
                 throw new ContainerNotFoundException();
         }

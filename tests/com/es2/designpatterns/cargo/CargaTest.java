@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class TransporteTest {
+class CargaTest {
 
     @Test
-    void testTransporte() throws ContainerNotFoundException, UserNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException, ContainerPoolMaxedOutException {
+    void testCarga() throws ContainerNotFoundException, UserNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException, ContainerPoolMaxedOutException {
 
         //Create Contentor
         ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 30);
@@ -35,10 +35,10 @@ class TransporteTest {
         medicamento1.setQuantity(10);
         medicamento1.setUnitValue(5);
 
-        //Create transporte
-        Cargo.addTransporte(caixa1);
-        caixa1.addTransporte(embalagem1);
-        embalagem1.addTransporte(medicamento1);
+        //Create Carga
+        Cargo.addCarga(caixa1);
+        caixa1.addCarga(embalagem1);
+        embalagem1.addCarga(medicamento1);
     }
 
     @Test
@@ -60,7 +60,7 @@ class TransporteTest {
                     medicamento3.setUnitValue(7);
 
                     //Add medicamento(size = 11) to Caixa(size = 10)
-                    container.addTransporte(medicamento3);
+                    container.addCarga(medicamento3);
 
                 });
     }

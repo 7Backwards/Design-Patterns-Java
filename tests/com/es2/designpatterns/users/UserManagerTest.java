@@ -2,11 +2,10 @@ package com.es2.designpatterns.users;
 
 import com.es2.designpatterns.exceptions.UserExistingException;
 import com.es2.designpatterns.exceptions.UserNotFoundException;
-
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UserManagerTest {
 
@@ -20,9 +19,9 @@ class UserManagerTest {
     void testUserNotFoundException() {
 
         assertThrows(UserNotFoundException.class,
-                ()->{
+                () -> {
 
-                    UserManager.getInstanceLogin().loginUser("moto1", "moto2");
+                    UserManager.getInstanceLogin().loginUser("moto5", "moto5");
                 });
     }
 
@@ -39,7 +38,7 @@ class UserManagerTest {
     void testUserTypeNotFoundException() {
 
         assertThrows(UserTypeNotFoundException.class,
-                ()->{
+                () -> {
 
                     UserManager.getInstanceLogin().registerUser("fakeType", "admin1", "admin1");
                 });
@@ -49,7 +48,7 @@ class UserManagerTest {
     void testUserExistingException() {
 
         assertThrows(UserExistingException.class,
-                ()->{
+                () -> {
 
                     UserManager.getInstanceLogin().registerUser("Gestor", "admin3", "admin3");
                     UserManager.getInstanceLogin().registerUser("Gestor", "admin3", "admin3");

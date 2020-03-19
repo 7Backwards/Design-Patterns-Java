@@ -1,7 +1,8 @@
 package com.es2.designpatterns.cargo;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MedicamentoTest {
 
@@ -25,8 +26,6 @@ class MedicamentoTest {
         medicamento2.setUnitValue(5);
         assertEquals(medicamento2.getMedicineValue(), 50.0);
     }
-
-
 
 
 }

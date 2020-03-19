@@ -3,36 +3,36 @@ package com.es2.designpatterns.cargo;
 import com.es2.designpatterns.exceptions.ContainerFullException;
 import java.util.ArrayList;
 
-public class Container extends Transporte {
+public class Container extends Carga {
 
-    private ArrayList<Transporte> mTransportes = new ArrayList<>();
+    private ArrayList<Carga> mCargas = new ArrayList<>();
 
-    public void addTransporte(Transporte transporte) throws ContainerFullException {
+    public void addCarga(Carga carga) throws ContainerFullException {
 
-        if (this.getSize() - transporte.getSize() >= 0)
-            mTransportes.add(transporte);
+        if (this.getSize() - carga.getSize() >= 0)
+            mCargas.add(carga);
         else
             throw new ContainerFullException();
     }
 
 
     @Override
-    public String getTransporteItems() {
+    public String getCargaItems() {
 
         StringBuilder response = new StringBuilder();
 
         response.append(getName()).append("\n");
-        for (Transporte transporte : mTransportes) {
-            response.append(transporte.getTransporteItems());
+        for (Carga carga : mCargas) {
+            response.append(carga.getCargaItems());
         }
         return response.toString();
     }
 
     @Override
-    public float getTransporteTotalPrice() {
+    public float getCargaTotalPrice() {
         float totalPrice = 0;
-        for (Transporte transporte : mTransportes) {
-            totalPrice += transporte.getTransporteTotalPrice();
+        for (Carga carga : mCargas) {
+            totalPrice += carga.getCargaTotalPrice();
         }
         return totalPrice;
     }

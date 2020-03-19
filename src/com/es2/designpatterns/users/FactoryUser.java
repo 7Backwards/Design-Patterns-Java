@@ -5,7 +5,6 @@ import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
 public abstract class FactoryUser {
 
     /**
-     *
      * @param type Type of User to be created
      * @return User object created
      * @throws UserTypeNotFoundException Invalid type

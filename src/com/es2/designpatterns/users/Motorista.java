@@ -8,7 +8,6 @@ public class Motorista implements User {
     private boolean mStatusAvailable = true;
 
     /**
-     *
      * @param password Login received password
      * @return True if password match else false
      */
@@ -18,7 +17,6 @@ public class Motorista implements User {
     }
 
     /**
-     *
      * @param username Set new user username
      * @param password Set new user password
      */
@@ -29,7 +27,6 @@ public class Motorista implements User {
     }
 
     /**
-     *
      * @return Username
      */
     @Override
@@ -38,7 +35,6 @@ public class Motorista implements User {
     }
 
     /**
-     *
      * @param newPassword set new password
      */
     @Override
@@ -47,19 +43,17 @@ public class Motorista implements User {
     }
 
     /**
-     *
-     * @param carLicenseNr Set driver license
-     */
-    public void setCarLicense(String carLicenseNr) {
-        mCarLicense = carLicenseNr;
-    }
-
-    /**
-     *
      * @return Get driver license
      */
     public String getCarLicense() {
         return mCarLicense;
+    }
+
+    /**
+     * @param carLicenseNr Set driver license
+     */
+    public void setCarLicense(String carLicenseNr) {
+        mCarLicense = carLicenseNr;
     }
 
     /**
@@ -70,7 +64,6 @@ public class Motorista implements User {
     }
 
     /**
-     *
      * @return Driver status - True if available - False if not available
      */
     public boolean getStatus() {
