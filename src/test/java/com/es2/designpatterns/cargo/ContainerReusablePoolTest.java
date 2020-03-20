@@ -10,6 +10,7 @@ class ContainerReusablePoolTest {
 
     @Test
     void testaddContainer() throws ContainerNotFoundException, ContainerPoolMaxedOutException {
+        ContainerReusablePool.getInstance().resetContainers();
         ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 10);
     }
 
@@ -18,7 +19,7 @@ class ContainerReusablePoolTest {
 
         assertThrows(ContainerNotFoundException.class,
                 () -> {
-
+                    ContainerReusablePool.getInstance().resetContainers();
                     ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 10);
                     Container container = ContainerReusablePool.getInstance().getContainer("NonExistName");
                 });
@@ -29,11 +30,12 @@ class ContainerReusablePoolTest {
 
         assertThrows(ContainerPoolMaxedOutException.class,
                 () -> {
+                    ContainerReusablePool.getInstance().resetContainers();
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
+                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
 
-                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
-                    ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
                 });
     }
 
@@ -51,7 +53,7 @@ class ContainerReusablePoolTest {
 
         assertThrows(ContainerNotFoundException.class,
                 () -> {
-
+                    ContainerReusablePool.getInstance().resetContainers();
                     ContainerReusablePool.getInstance().addContainer("Container", "Caixa", 10);
                     Container container = ContainerReusablePool.getInstance().getContainer("Contentor");
                     container.setName("Caixa3");

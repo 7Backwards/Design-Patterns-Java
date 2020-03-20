@@ -52,6 +52,7 @@ class FaturaCargaTest {
         int idFatura = faturaCarga.addFatura(new FaturaCargaPeriodoNormal());
         faturaCarga.setPercentagem(idFatura, (float) 50);
         faturaCarga.setFatura(idFatura, Cargo);
+        ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-1");
     }
 
 
@@ -107,6 +108,7 @@ class FaturaCargaTest {
                     FaturaCarga faturaCarga = new FaturaCarga();
                     int idFatura = faturaCarga.addFatura(new FaturaCargaPeriodoNormal());
                     faturaCarga.setPercentagem(idFatura, null);
+                    ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-2");
                 });
     }
 
