@@ -4,8 +4,6 @@ os:
 language: java
 jdk:
   - oraclejdk11
-  - openjdk10
-  - openjdk11
 branches:
   only:
     - dev
