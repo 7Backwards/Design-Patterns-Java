@@ -1,5 +1,5 @@
-import com.es2.designpatterns.cargo.Container;
-import com.es2.designpatterns.cargo.ContainerReusablePool;
+package com.es2.designpatterns.cargo;
+
 import com.es2.designpatterns.exceptions.ContainerNotFoundException;
 import com.es2.designpatterns.exceptions.ContainerPoolMaxedOutException;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,9 @@
+package com.es2.designpatterns.invoice;
+
 import com.es2.designpatterns.cargo.Container;
 import com.es2.designpatterns.cargo.ContainerReusablePool;
 import com.es2.designpatterns.cargo.Medicamento;
 import com.es2.designpatterns.exceptions.*;
-import com.es2.designpatterns.invoice.FaturaCarga;
-import com.es2.designpatterns.invoice.FaturaCargaPeriodoNormal;
 import com.es2.designpatterns.users.UserManager;
 import org.junit.jupiter.api.Test;
 

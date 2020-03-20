@@ -1,7 +1,8 @@
+package com.es2.designpatterns.users;
+
 import com.es2.designpatterns.exceptions.UserExistingException;
 import com.es2.designpatterns.exceptions.UserNotFoundException;
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;
-import com.es2.designpatterns.users.UserManager;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
