@@ -1,5 +1,3 @@
-package designpatterns.users;
-
 import com.es2.designpatterns.exceptions.UserExistingException;
 import com.es2.designpatterns.exceptions.UserNotFoundException;
 import com.es2.designpatterns.exceptions.UserTypeNotFoundException;

@@ -1,5 +1,3 @@
-package designpatterns.cargo;
-
 import com.es2.designpatterns.cargo.Container;
 import com.es2.designpatterns.cargo.ContainerReusablePool;
 import com.es2.designpatterns.exceptions.ContainerNotFoundException;

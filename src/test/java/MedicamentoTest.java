@@ -1,5 +1,3 @@
-package designpatterns.cargo;
-
 import com.es2.designpatterns.cargo.Medicamento;
 import org.junit.jupiter.api.Test;
 
