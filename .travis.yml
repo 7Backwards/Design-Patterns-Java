@@ -3,11 +3,12 @@ os:
   - osx
 language: java
 jdk:
+  - oraclejdk8
+  - oraclejdk11
   - openjdk10
   - openjdk11
-  - openjdk-8-jdk
 branches:
   only:
     - dev
-script:
-  - "mvn test"
+script: "mvn verify"
+
