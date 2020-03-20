@@ -10,4 +10,4 @@ branches:
     - dev
 before_script:
 script:
-  - mvn test -B
+  - mvn verify
