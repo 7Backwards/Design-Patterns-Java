@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FaturaCargaTest {
+/*
 
     @Test
     void testCreateFatura() throws FaturaCargaNotFoundException, ContainerFullException, ContainerNotFoundException, UserNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException {
@@ -111,5 +112,6 @@ class FaturaCargaTest {
                     ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-2");
                 });
     }
+*/
 
 }
