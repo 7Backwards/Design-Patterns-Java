@@ -8,11 +8,16 @@ import com.es2.designpatterns.invoice.FaturaCarga;
 import com.es2.designpatterns.invoice.FaturaCargaPeriodoNormal;
 import com.es2.designpatterns.users.UserManager;
 
+import java.awt.*;
+
 public class Main {
 
 
-    public static void main(String[] args) throws ContainerFullException {
+    public Main() throws UserNotFoundException, UserExistingException, UserTypeNotFoundException, ContainerNotFoundException, ContainerPoolMaxedOutException {
+    }
 
+    public static void main(String[] args) throws ContainerFullException, UserNotFoundException, UserExistingException, UserTypeNotFoundException, ContainerNotFoundException, ContainerPoolMaxedOutException {
+/*
         try {
             System.out.println("Software meDelivery:");
 
@@ -133,10 +138,12 @@ public class Main {
             //Finish
             System.out.println("FINISH");
 
-
         } catch (ContainerNotFoundException | UserNotFoundException | FaturaCargaNotFoundException | InvalidPercentagemException e) {
             e.printStackTrace();
         }
+*/
+
+        MenuApp ass = new MenuApp();
 
 
     }
