@@ -11,6 +11,7 @@ class CargaTest {
     @Test
     void testCarga() throws ContainerNotFoundException, UserNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException, ContainerPoolMaxedOutException {
 
+        ContainerReusablePool.getInstance().resetContainers();
         //Create Contentor
         ContainerReusablePool.getInstance().addContainer("Container", "Contentor", 10);
         Container Cargo = ContainerReusablePool.getInstance().getContainer("Contentor");
