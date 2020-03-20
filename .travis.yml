@@ -9,6 +9,5 @@ jdk:
 branches:
   only:
     - dev
-before_script:
 script:
-  - mvn verify
+  - "mvn test"
