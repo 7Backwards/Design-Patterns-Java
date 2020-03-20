@@ -1,5 +1,6 @@
-package com.es2.designpatterns.cargo;
+package designpatterns.cargo;
 
+import com.es2.designpatterns.cargo.Medicamento;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
