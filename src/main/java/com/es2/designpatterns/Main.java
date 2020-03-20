@@ -6,13 +6,12 @@ import com.es2.designpatterns.cargo.Medicamento;
 import com.es2.designpatterns.exceptions.*;
 import com.es2.designpatterns.invoice.EmiteFatura;
 import com.es2.designpatterns.invoice.FaturaCarga;
-import com.es2.designpatterns.invoice.FaturaCargaPeriodoNormal;
 import com.es2.designpatterns.users.UserManager;
 
 public class Main {
 
 
-    public static void main(String[] args) throws ContainerFullException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException {
+    public static void main(String[] args) throws ContainerFullException, UserTypeNotFoundException, UserExistingException {
 
         System.out.println("Software meDelivery:");
 
@@ -114,8 +113,9 @@ public class Main {
 
             //Test create invoice
 
-            FaturaCarga newFatura = new EmiteFatura(new FaturaCargaPeriodoNormal());
-            newFatura.emite(Cargo);
+            FaturaCarga newFatura = new EmiteFatura();
+            newFatura.emite(Cargo, "normal");
+            newFatura.emite(Cargo, "especial");
 
             //Release Motorista
             UserManager.getInstanceLogin().freeMotorista(Cargo.getMotoristaInCharge().getUsername());
@@ -128,7 +128,7 @@ public class Main {
             System.out.println("FINISH");
 
 
-        } catch (ContainerNotFoundException | UserNotFoundException e) {
+        } catch (ContainerNotFoundException | UserNotFoundException | FaturaTypeNotFoundException e) {
             e.printStackTrace();
         }
 

@@ -6,12 +6,17 @@ public class FaturaCargaPeriodoEspecial implements FaturaCargaInterface {
 
     Float valorPercentagem = (float)10.0;
 
+    /**
+     *        Fatura período especial - 10%
+     *
+     * @param carga Container composite
+     */
     @Override
     public void emiteFaturaCarga(Carga carga) {
 
         System.out.println(carga.getCargaItems() +
                 "\nValor Total da Carga - " + carga.getCargaTotalPrice() +
-                "\nValor do Carga - " + carga.getCargaTotalPrice() * (valorPercentagem / 100) +
+                "\nValor Faturado - " + carga.getCargaTotalPrice() * (valorPercentagem / 100) +
                 "\nPercentagem - " + valorPercentagem +
                 "\nTipo de Carga - " + this.getClass());
     }

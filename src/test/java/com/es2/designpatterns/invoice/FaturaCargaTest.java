@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FaturaCargaTest {
-/*
+
 
     @Test
-    void testCreateFatura() throws FaturaCargaNotFoundException, ContainerFullException, ContainerNotFoundException, UserNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException {
+    void testCreateFatura() throws FaturaTypeNotFoundException, ContainerFullException, ContainerNotFoundException, UserNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException {
 
         ContainerReusablePool.getInstance().resetContainers();
         //Add Contentor
@@ -49,29 +49,18 @@ class FaturaCargaTest {
 
         //Test create Fatura
 
-        FaturaCarga faturaCarga = new FaturaCarga();
-        int idFatura = faturaCarga.addFatura(new FaturaCargaPeriodoNormal());
-        faturaCarga.setPercentagem(idFatura, (float) 50);
-        faturaCarga.setFatura(idFatura, Cargo);
+        //Test create invoice
+
+        FaturaCarga newFatura = new EmiteFatura();
+        newFatura.emite(Cargo, "normal");
         ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-1");
     }
 
 
     @Test
-    void testFaturaCargaNotFoundException() {
+    void testFaturaTypeNotFoundException() {
 
-        assertThrows(FaturaCargaNotFoundException.class,
-                () -> {
-
-                    FaturaCarga faturaCarga = new FaturaCarga();
-                    faturaCarga.setPercentagem(2135, (float) 50);
-                });
-    }
-
-    @Test
-    void testInvalidPercentagemException() {
-
-        assertThrows(InvalidPercentagemException.class,
+        assertThrows(FaturaTypeNotFoundException.class,
                 () -> {
                     ContainerReusablePool.getInstance().resetContainers();
                     //Add Contentor
@@ -104,14 +93,13 @@ class FaturaCargaTest {
                     caixa2.addCarga(embalagem2);
                     embalagem2.addCarga(medicamento2);
 
-                    //Test create Fatura
+                    //Test create invoice
 
-                    FaturaCarga faturaCarga = new FaturaCarga();
-                    int idFatura = faturaCarga.addFatura(new FaturaCargaPeriodoNormal());
-                    faturaCarga.setPercentagem(idFatura, null);
+                    FaturaCarga newFatura = new EmiteFatura();
+                    newFatura.emite(Cargo2, "teste");
                     ContainerReusablePool.getInstance().releaseContainerByName("Contentor", "Cargo-2");
                 });
     }
-*/
+
 
 }
