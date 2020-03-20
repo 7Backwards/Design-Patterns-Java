@@ -1,0 +1,13 @@
+os:
+  - linux
+  - osx
+language: java
+jdk:
+  - openjdk10
+  - openjdk11
+branches:
+  only:
+    - dev
+before_script:
+script:
+  - mvn test -B
