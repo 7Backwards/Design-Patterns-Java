@@ -12,8 +12,8 @@ import com.es2.designpatterns.users.UserManager;
 public class Main {
 
 
-    public static void main(String[] args) throws ContainerFullException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException {
-
+    public static void main(String[] args) throws ContainerFullException, UserTypeNotFoundException, UserExistingException, InvalidPercentagemException, UserNotFoundException, ContainerNotFoundException, ContainerPoolMaxedOutException {
+/*
         System.out.println("Software meDelivery:");
 
         System.out.print("\nRegisto do Gestor - ");
@@ -133,8 +133,12 @@ public class Main {
         }
 
 
-    }
+    }*/
 
+        MenuApp menu = new MenuApp();
+
+
+    }
 }
 
 
