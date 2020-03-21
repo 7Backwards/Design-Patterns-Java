@@ -11,6 +11,7 @@ import com.es2.designpatterns.invoice.FaturaCargaPeriodoEspecial;
 import com.es2.designpatterns.invoice.FaturaCargaPeriodoNormal;
 import com.es2.designpatterns.users.UserManager;
 
+import java.awt.desktop.SystemSleepEvent;
 import java.util.Scanner;
 
 
@@ -286,10 +287,7 @@ class MenuApp {
 
                 case 2:
                     tempContainer = createcargo();
-                    input.nextInt();
-                    System.out.println("The invoice will be showed. Press Enter");
-
-                    choose = input.nextInt();
+                    System.out.println("The invoice will be showed");
                     faturacao(tempContainer);
                     choose = 11;
                     break;
@@ -431,9 +429,18 @@ class MenuApp {
         int caixasemconteor = 0;
 
 
+        System.out.println("Adding a 'Motorista' to this order");
+        System.out.println("--------------------------------------------------------------------");
+        //tempContainer.setMotoristaInCharge(UserManager.getInstanceLogin().getAvailableMotorista());
+
+
+
+        //////////////////////////////////////////////////////////contentor/////////////////////////////////////////////////
         System.out.println("Do u want to add a container of the type 'contentor' to your order?");
         System.out.println("1-Yes \n2-No");
         resposta = input.nextInt();
+
+
 
         while (resposta == 1) {
 
@@ -453,7 +460,7 @@ class MenuApp {
                 }*/
             } catch (ContainerNotFoundException e) {
                 System.out.println("'Contentor' not found, Create one?");
-                System.out.println("1-Yes \n2-No");
+                System.out.println("1-Yes  2-No");
                 resposta = input.nextInt();
                 if (resposta == 1) {
                     tipocontainer = "Contentor";
@@ -472,12 +479,12 @@ class MenuApp {
 //////////////////////////////////////////////////////////CAIXAS///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         System.out.println("Do u want to add a container of the type 'caixa' to your order?");
-        System.out.println("1-Yes \n2-No");
+        System.out.println("1-Yes  2-No");
         resposta = input.nextInt();
         while (resposta == 1) {
             if (resposta == 1) {
                 System.out.println("Do u want to add this 'caixa inside the 'contentor' created before?");
-                System.out.println("1-Yes \n2-No");
+                System.out.println("1-Yes  2-No");
                 resposta = input.nextInt();
 
                 if (resposta == 1) {
@@ -505,7 +512,7 @@ class MenuApp {
 
                     } catch (ContainerNotFoundException e) {
                         System.out.println("'Caixa' not found!! Create one?");
-                        System.out.println("1-Yes \n2-No");
+                        System.out.println("1-Yes  2-No");
                         resposta = input.nextInt();
                         if (resposta == 1) {
                             tipocontainer = "Caixa";
@@ -536,7 +543,7 @@ class MenuApp {
                 }*/
                         } catch (ContainerNotFoundException e) {
                             System.out.println("'Caixa' not found, Create one?");
-                            System.out.println("1-Yes \n2-No");
+                            System.out.println("1-Yes 2-No");
                             resposta = input.nextInt();
                             if (resposta == 1) {
                                 tipocontainer = "Caixa";
@@ -559,7 +566,7 @@ class MenuApp {
         //////////////////////////////////////////////////////////EMBALAGEM///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         while (resposta == 1) {
             System.out.println("Do u want to create a 'Embalagem?'?");
-            System.out.println("1-Yes \n2-No");
+            System.out.println("1-Yes 2-No");
             resposta = input.nextInt();
             if (resposta == 1) {
                 System.out.println("Do u want to add a embalagem to a: 1-Caixa 2-Contentor?");
@@ -765,7 +772,7 @@ class MenuApp {
 
         for (int i = 0; i < numberlines; i++)
             System.out.println("\n");
-        
+
     }
 }
 
