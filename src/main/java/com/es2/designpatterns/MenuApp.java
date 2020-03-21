@@ -20,6 +20,7 @@ import java.util.Scanner;
  * This class corresponds to the first menu that the user get
  * this class is used to choose between create and login an account
  * after that is used to display all the options according to the type of user
+ * 
  **/
 
 
