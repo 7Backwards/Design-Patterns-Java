@@ -20,7 +20,7 @@ import java.util.Scanner;
  * This class corresponds to the first menu that the user get
  * this class is used to choose between create and login an account
  * after that is used to display all the options according to the type of user
- * 
+ *
  **/
 
 
@@ -231,7 +231,7 @@ class MenuApp {
      */
 
 
-    private void MenuAdmin() throws ContainerNotFoundException, ContainerPoolMaxedOutException, UserNotFoundException, InvalidPercentagemException, FaturaCargaNotFoundException, ContainerFullException {
+    private void MenuAdmin() throws ContainerNotFoundException, ContainerPoolMaxedOutException, UserNotFoundException, InvalidPercentagemException, FaturaCargaNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException {
 
         Scanner input = new Scanner(System.in);
         Scanner Contentor = new Scanner(System.in);
@@ -290,8 +290,8 @@ class MenuApp {
                     faturacao(tempContainer);
                     choose = 11;
                     break;
-                case 3:
-
+                case 0:
+                    new MenuApp();
 
                     break;
                 default:
@@ -306,7 +306,7 @@ class MenuApp {
         }
     }
 
-    private void MenuMotorista(String Nome) throws ContainerNotFoundException, ContainerPoolMaxedOutException, UserNotFoundException, InvalidPercentagemException, FaturaCargaNotFoundException, ContainerFullException {
+    private void MenuMotorista(String Nome) throws ContainerNotFoundException, ContainerPoolMaxedOutException, UserNotFoundException, InvalidPercentagemException, FaturaCargaNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException {
 
 
         Scanner input = new Scanner(System.in);
@@ -327,16 +327,16 @@ class MenuApp {
         System.out.println("###### 2 - Create a Container with all the possibilities  #######");
         System.out.println("######  ------------------------------------------------  #######");
 
-        System.out.println("######                   11- EXIT                         #######");
+        System.out.println("######                   4 - EXIT                         #######");
         System.out.println("######                                                    #######");
         System.out.println("#################################################################");
 
 
         String tipocontainer;
-        int sizecontainer;
+        int sizecontainer = 0;
         choose = input.nextInt();
 
-        while (choose < 10) {
+        while (choose < 4) {
             switch (choose) {
                 case 1:
                     System.out.println("##############################################################");
@@ -347,7 +347,7 @@ class MenuApp {
                         sizecontainer = 30;
                     } else if ("Caixa".equals(tipocontainer)) {
                         sizecontainer = 10;
-                    } else {
+                    } else if ("Embalagem".equals(tipocontainer)){
                         sizecontainer = 5;
                     }
                     addcontainer(tipocontainer, sizecontainer);
@@ -367,6 +367,9 @@ class MenuApp {
                         System.out.println("No Container Identified.");
                     }
                     break;
+                case 4:
+                    MenuAdmin();
+
                 default:
 
                     System.out.println("invalid character");
