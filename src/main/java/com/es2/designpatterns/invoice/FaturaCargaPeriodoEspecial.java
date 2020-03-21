@@ -4,7 +4,7 @@ import com.es2.designpatterns.cargo.Carga;
 
 public class FaturaCargaPeriodoEspecial implements FaturaCargaInterface {
 
-    Float valorPercentagem = (float)10.0;
+    private Float valorPercentagem = (float) 10.0;
 
     /**
      *        Fatura período especial - 10%
