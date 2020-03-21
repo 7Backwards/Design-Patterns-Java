@@ -18,7 +18,7 @@ import java.util.Scanner;
  * MenuApp class
  * <p>
  * This class corresponds to the first menu that the user get
- * this class is used to choose between create and login an account
+ * this class is used to choose between create and login an new account
  * after that is used to display all the options according to the type of user
  *
  **/
@@ -99,12 +99,15 @@ class MenuApp {
 
 
     /**
-     * Function that correspond to the Login menu
      *
-     * @return
-     * @throws UserNotFoundException
+     *
+     * @return value returned to send the menu choice
+     * @throws UserNotFoundException to verification of an non existing user
+     * @throws ContainerNotFoundException (if container of the type required not found in the reusable pool)
+     * @throws ContainerPoolMaxedOutException (Container reusable pool cant receive more containers)
+     * @throws UserTypeNotFoundException User type is not found
+     * @throws UserExistingException User already exists which means u can't create another
      */
-
 
     private int LoginMenu() throws UserNotFoundException, ContainerNotFoundException, ContainerPoolMaxedOutException, UserTypeNotFoundException, UserExistingException {
 
@@ -150,11 +153,7 @@ class MenuApp {
             }
         } catch (UserNotFoundException e) {
             System.out.println("Password or Username don't match, Try Again!!!");
-        } catch (InvalidPercentagemException e) {
-            e.printStackTrace();
-        } catch (FaturaCargaNotFoundException e) {
-            e.printStackTrace();
-        } catch (ContainerFullException e) {
+        } catch (InvalidPercentagemException | FaturaCargaNotFoundException | ContainerFullException e) {
             e.printStackTrace();
         }
 
@@ -166,8 +165,8 @@ class MenuApp {
     /**
      * this menu is used to create an user (being driver or admin("gestor"))
      *
-     * @return
-     * @throws UserNotFoundException
+     * @return String to tell if the registry is sucessefull or not
+     * @throws UserNotFoundException user not found
      */
 
     private String RegisterMenu() throws UserNotFoundException, UserTypeNotFoundException, UserExistingException, ContainerNotFoundException, ContainerPoolMaxedOutException {
@@ -223,13 +222,17 @@ class MenuApp {
 
 
     /**
-     * this function is used to display all the options that admin can do
      *
-     * @return
-     * @throws ContainerNotFoundException
-     * @throws ContainerPoolMaxedOutException
+     *
+     * @throws ContainerNotFoundException /
+     * @throws ContainerPoolMaxedOutException /
+     * @throws UserNotFoundException /
+     * @throws InvalidPercentagemException /
+     * @throws FaturaCargaNotFoundException /
+     * @throws ContainerFullException /
+     * @throws UserTypeNotFoundException /
+     * @throws UserExistingException /
      */
-
 
     private void MenuAdmin() throws ContainerNotFoundException, ContainerPoolMaxedOutException, UserNotFoundException, InvalidPercentagemException, FaturaCargaNotFoundException, ContainerFullException, UserTypeNotFoundException, UserExistingException {
 
@@ -487,6 +490,7 @@ class MenuApp {
 
                         tempCaixa.setName(nomeCaixa);
                         try {
+
                             tempContainer.addCarga(tempCaixa);
 
                             System.out.println("'Caixa' " + nomeCaixa + " added to the 'contentor' " + nomeContentor);
@@ -757,12 +761,11 @@ class MenuApp {
      */
 
 
-    public static int linhas(int numberlines) {
+    private void linhas(int numberlines) {
 
         for (int i = 0; i < numberlines; i++)
             System.out.println("\n");
-
-        return 1;
+        
     }
 }
 
